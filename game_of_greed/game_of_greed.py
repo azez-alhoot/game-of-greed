@@ -5,27 +5,30 @@ class GameLogic():
 
     @staticmethod
     def role_dice(tup):
-    output = []
+        output = []
 
-    for i in range(len(tup)):
-        output.append(random.randint(1,6))
+        for i in range(len(tup)):
+            output.append(random.randint(1,6))
 
-    return tuple(output)
+        return tuple(output)
     
-    print(role_dice((1,5,6,5)))
 
     @staticmethod
     def calculte_score(tup):
         scoure = 0
         cou = Counter(tup)
-        if cou.most_common()[0] == (1,1):
+        print(cou)
+        if cou == ({1: 1, 5: 1, 4: 1, 2: 1, 6: 1, 3: 1}):
             scoure+= 1500
             return scoure
 
-        if cou.most_common()[0][1] == 2 and cou.most_common()[1][1] == 2 and cou.most_common()[2][1] == 2:
-            scoure+= 750
-            return scoure
-        for i in range(1,len(tup)+1,1):
+        if len(tup)==6:
+            if cou.most_common()[0][1] == 2 and cou.most_common()[1][1] == 2 and cou.most_common()[2][1] == 2:
+                scoure+= 750
+                return scoure
+
+        for i in range(1,7):
+            print(i)
             if i == 1:
                 if cou[i] == 1:
                     scoure+=100
@@ -104,48 +107,31 @@ class GameLogic():
                     scoure +=1800
                 if cou[i] == 6:
                     scoure +=2400
-
         return scoure
-    def roll_dice():
-        pass
-
-num =[]
-for i in range(1,7):
-    num.append(i)
-
-print(GameLogic.calculte_score((2,2,4,5,4,5)))
-
 
 
 class Banker():
     total=0
     unbanked_points=0
-    def __init__(self,score):
-        # self.score=int(score)
-        self.score=score
+    # def __init__(self,score):
+        # self.score=score
 
-    def shelf(self):
+    def shelf(self,score):
         """
         Input to shelf is the amount of points (integer) to add to shelf.
         shelf should temporarily store unbanked points.
         """
-        # unbanked_points=score
-        # unbanked_score=self.score
-        Banker.unbanked_points=self.score
+        Banker.unbanked_points=score
         return Banker.unbanked_points
-        # pass
     # _____________________________________
     def bank(self):
         """
          should add any points on the shelf to total and reset shelf to 0.
          output should be the amount of points added to total from shelf.
         """
-        # unbanked_points=Banker.shelf()
-        # unbanked_points=20
         
         Banker.total+=Banker.unbanked_points
-        # clear_shelf()
-        
+        Banker.clear_shelf(self)
         return Banker.total
 
     # _____________________________________
@@ -154,30 +140,33 @@ class Banker():
         should remove all unbanked points.
         """
         Banker.unbanked_points=0
-        # pass
     
 
 
 
 if __name__ == "__main__":
-    print("_"*50)  
-    test=Banker(40)
-    shelf_test=test.shelf() 
-    print(shelf_test) 
-    print("_"*50)  
-    bank_test=test.bank()
-    print(Banker.total) 
-    print(Banker.unbanked_points) 
+    # print("_"*50)  
+    # test=Banker(40)
+    # shelf_test=test.shelf() 
+    # print(shelf_test) 
+    # print("_"*50)  
+    # bank_test=test.bank()
+    # print(Banker.total) 
+    # print(Banker.unbanked_points) 
     # test.clear_shelf()
     # print(Banker.total) 
     # print(Banker.unbanked_points) 
-    print("_"*50)  
-    test2=Banker(50)
-    shelf_test2=test2.shelf() 
-    bank_test2=test2.bank()
-    test.clear_shelf()
-    print(Banker.total) 
-    print(Banker.unbanked_points) 
+    # print("_"*50)  
+    # test2=Banker(50)
+    # shelf_test2=test2.shelf() 
+    # bank_test2=test2.bank()
+    # test.clear_shelf()
+    # print(Banker.total) 
+    # print(Banker.unbanked_points) 
+    # print(GameLogic.calculte_score((1,2,1,2,3,3)))
+    # print(GameLogic.calculte_score((1,2,3,4,5,6)))
+    # print(GameLogic.calculte_score((1, 1)))
+    # print(GameLogic.role_dice((6,5,6,3,4)))
 
 
 
