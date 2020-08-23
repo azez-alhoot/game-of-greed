@@ -3,6 +3,17 @@ from collections import Counter
 class GameLogic():
 
     @staticmethod
+    def role_dice(tup):
+    output = []
+
+    for i in range(len(tup)):
+        output.append(random.randint(1,6))
+
+    return tuple(output)
+    
+    print(role_dice((1,5,6,5)))
+
+    @staticmethod
     def calculte_score(tup):
         scoure = 0
         cou = Counter(tup)
@@ -102,3 +113,13 @@ for i in range(1,7):
     num.append(i)
 
 print(GameLogic.calculte_score((2,2,4,5,4,5)))
+
+
+
+
+
+
+
+
+
+
