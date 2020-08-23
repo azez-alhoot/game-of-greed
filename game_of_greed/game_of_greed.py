@@ -3,7 +3,7 @@ from collections import Counter
 class GameLogic():
 
     @staticmethod
-    def role_dice(tup):
+    def role_dice(num = 6):
     output = []
 
     for i in range(len(tup)):
@@ -105,8 +105,6 @@ class GameLogic():
                     scoure +=2400
 
         return scoure
-    def roll_dice():
-        pass
 
 num =[]
 for i in range(1,7):
