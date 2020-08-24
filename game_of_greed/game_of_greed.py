@@ -24,7 +24,7 @@ class GameLogic():
 
         if len(tup)==6:
             if cou.most_common()[0][1] == 2 and cou.most_common()[1][1] == 2 and cou.most_common()[2][1] == 2:
-                scoure+= 750
+                scoure+= 1500
                 return scoure
 
         for i in range(1,7):
@@ -100,7 +100,7 @@ class GameLogic():
                 if cou[i] == 2:
                     scoure +=0
                 if cou[i] == 3:
-                    scoure +=300
+                    scoure +=600
                 if cou[i] == 4:
                     scoure +=1200
                 if cou[i] == 5:
@@ -163,8 +163,8 @@ if __name__ == "__main__":
     # test.clear_shelf()
     # print(Banker.total) 
     # print(Banker.unbanked_points) 
-    # print(GameLogic.calculte_score((1,2,1,2,3,3)))
-    # print(GameLogic.calculte_score((1,2,3,4,5,6)))
+    # print(GameLogic.calculte_score((6,6,6)))
+    print(GameLogic.calculte_score((2,2,3,3,5,5)))
     # print(GameLogic.calculte_score((1, 1)))
     # print(GameLogic.role_dice((6,5,6,3,4)))
 
