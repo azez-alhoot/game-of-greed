@@ -1,4 +1,6 @@
+# from game_of_greed.game_of_greed import GameLogic, Banker
 from game_of_greed import GameLogic, Banker
+
 import sys
 class Game:
 
@@ -31,48 +33,49 @@ class Game:
         elif response == 'y':
             print(f"Starting round {round}")
             print(f"Rolling {num_dice} dice...")
-            # Because Flo use mock roller
             roll = self.roller(num_dice)
             print(Game.print_roll(roll))
-            # In case we don't use Flo
-            # roll = GameLogic.roll_dice(num_dice)
             self.print_roll(roll)
-            # count =1
+
             while 0 < round <= 6:
+                # round +=1
                 what_next = input("Enter dice to keep (no spaces), or (q)uit: ")
                 if what_next == 'q' or what_next == 'quit':
                     print(f"Total score is {score} points")
                     print(f"Thanks for playing. You earned {score} points")
                     break
                 else:
-                    inpt = Game.convert_to_tup(what_next)
-                    score += GameLogic.calculte_score(inpt)
-                    num_dice -= len(what_next)
+                    generate_new_tupe = Game.convert_to_tup(what_next)
+                    score += GameLogic.calculte_score(generate_new_tupe)
+                    num_dice = 6-len(generate_new_tupe)
                     print(f"You have {score} unbanked points and {num_dice} dice remaining")
                     inpt = input("(r)oll again, (b)ank your points or (q)uit ")
-
-                    if what_next == 'q' or what_next =='quit':
+                    # round+=1
+                    if inpt == 'q' or inpt =='quit':
                         break
 
-                    if what_next == 'r' or 'roll':
-                        print('******************************')
+                    if inpt == 'r' or inpt =='roll':
                         new_roll = GameLogic.role_dice(num_dice)
                         print(f"Rolling {num_dice} dice...")
                         rol3 = Game.print_roll(new_roll)
-                        num_dice -= len(what_next)
+                        num_dice = 6-len(generate_new_tupe)
                         print(rol3)
-                        round+=1
+                        # round+=1
 
-                    if what_next == 'b' or 'bank':
-                        print(f"You banked {score} points in round {round}")
-                        print(f"Total score is {score} points")
-                        print(f"Starting round {round}")
+                    if inpt == 'b' or inpt == 'bank':
+                        # round+=1
                         x.shelf(score)
                         x.bank()
+                        print(f"You banked {score} points in round {round}")
+                        print(f"Total score is {x.total} points")
+                        round +=1
+                        print(f"Starting round {round}")
+                        print("Rolling 6 dice...")
                         new_numbers = GameLogic.role_dice(6)
                         rol3 = Game.print_roll(new_numbers)
                         print(rol3)
-                        round +=1
+                        score = 0
+            # round +=1
                         # print(x.total)
                 # round+=1
             print(f"Total score is {x.total} points")
