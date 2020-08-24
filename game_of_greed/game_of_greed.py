@@ -4,10 +4,10 @@ from collections import Counter
 class GameLogic():
 
     @staticmethod
-    def role_dice(tup):
+    def role_dice(num):
         output = []
 
-        for i in range(len(tup)):
+        for i in range(num):
             output.append(random.randint(1,6))
 
         return tuple(output)
@@ -17,7 +17,7 @@ class GameLogic():
     def calculte_score(tup):
         scoure = 0
         cou = Counter(tup)
-        print(cou)
+        # print(cou)
         if cou == ({1: 1, 5: 1, 4: 1, 2: 1, 6: 1, 3: 1}):
             scoure+= 1500
             return scoure
@@ -28,7 +28,6 @@ class GameLogic():
                 return scoure
 
         for i in range(1,7):
-            print(i)
             if i == 1:
                 if cou[i] == 1:
                     scoure+=100
@@ -144,6 +143,7 @@ class Banker():
 
 
 
+
 if __name__ == "__main__":
     # print("_"*50)  
     # test=Banker(40)
@@ -167,7 +167,8 @@ if __name__ == "__main__":
     print(GameLogic.calculte_score((2,2,3,3,5,5)))
     # print(GameLogic.calculte_score((1, 1)))
     # print(GameLogic.role_dice((6,5,6,3,4)))
-
+    print(GameLogic.role_dice(6))
+    
 
 
 
