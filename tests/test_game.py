@@ -1,9 +1,15 @@
 from tests.flow.flo import Flo
-from game_of_greed.game_of_greed import GameLogic, Banker
+# from game_of_greed.game_of_greed import GameLogic, Banker
 
 
 def test_quitter():
-    Flo.test("tests/flow/quitter.txt")
+    Flo.test("flow/quitter.txt")
     
 def test_wanna_play_then_quit():
-    Flo.test("tests/flow/do_wanna_play_then_quit.txt")
+    Flo.test("flow/do_wanna_play_then_quit.txt")
+
+# def test_bank_first():
+#     Flo.test("flow/bank_one_roll_then_quit.txt")
+
+def test_bank_roll():
+    Flo.test("flow/bank_first_for_two_rounds.txt")
