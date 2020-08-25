@@ -81,6 +81,8 @@ class Flo:
 
             pairs = zip(print_lines, file_lines)
 
+            assert len(print_lines) == len(file_lines)
+            
             for i, pair in enumerate(pairs):
 
                 actual, expected = pair
